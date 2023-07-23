@@ -24,7 +24,7 @@ function Tracker() {
     <>
       <Header onSearch={handleSearch} />
       <div>
-        <MapContainer center={[lat, lng]} zoom={13} style={{ height: '61vh' }}>
+        <MapContainer key={`${lat}-${lng}`}  center={[lat, lng]} zoom={13} style={{ height: '61vh' }}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors"
