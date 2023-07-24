@@ -1,6 +1,6 @@
 import styles from './CardDesc.module.css'
 
-function CardDesc() {
+function CardDesc({ipAdress, location, timezone, isp}) {
     return (
         <>
             <div className={styles.containerCard}>
@@ -11,11 +11,11 @@ function CardDesc() {
                         <td>Timezone</td>
                         <td>ISP</td>
                     </tr>
-                    <tr>
-                        <td>104.255.60.0</td>
-                        <td>Japan</td>
-                        <td>UTC-05:00</td>
-                        <td>SpaceX</td>
+                    <tr className={styles.data}>
+                        <td>{ipAdress}</td>
+                        <td>{location}</td>
+                        <td>{timezone}</td>
+                        <td>{isp}</td>
                     </tr>
                 </table>
             </div>

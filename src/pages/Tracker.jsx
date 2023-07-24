@@ -8,6 +8,12 @@ import axios from 'axios'
 function Tracker() {
   const [lat, setLat] = useState(0);
   const [lng, setLng] = useState(0);
+  const [ipAddressData, setIpAddressData] = useState({
+    ipAddress: '',
+    location: '',
+    timezone: '',
+    isp: '',
+  });
 
   async function handleSearch(ipAddress) {
     try {
@@ -16,6 +22,12 @@ function Tracker() {
       console.log(response.data)
       setLat(lat);
       setLng(lng);
+      setIpAddressData({
+        ipAddress: response.data.ip,
+        location: `${response.data.location.city}, ${response.data.location.country}`,
+        timezone: response.data.location.timezone,
+        isp: response.data.isp,
+      });
     } catch (error) {
       console.error(error);
     }
@@ -33,7 +45,12 @@ function Tracker() {
           {lat !== 0 && lng !== 0 && <Marker position={[lat, lng]} />}
         </MapContainer>
       </div>
-      <CardDesc />
+      <CardDesc 
+        ipAdress={ipAddressData.ipAddress}
+        location={ipAddressData.location}
+        timezone={ipAddressData.timezone}
+        isp={ipAddressData.isp}
+      />
     </div>
   );
 }

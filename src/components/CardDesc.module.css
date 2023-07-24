@@ -18,3 +18,8 @@
     padding: 5vh;
     padding-top: 2vh;
 }
+
+.data td{
+    font-size: 1.5em;
+    font-weight: bold;
+}
